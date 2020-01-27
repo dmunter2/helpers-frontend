@@ -2,20 +2,16 @@ import React from 'react';
 
 
 
-function AllPosts(props){
+function PostCard(props){
 
 
     return(
         <div>
-            {props.cards.map((card) => {
-                return(
-                    <div>{card.post}</div>
-                )
-            })}
+            <h1>Hello Post Card</h1>
         </div>
     )
 }
 
-export default AllPosts;
+export default PostCard;
 
 

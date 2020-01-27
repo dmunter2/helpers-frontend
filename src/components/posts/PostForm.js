@@ -6,21 +6,17 @@ import React, {useState} from 'react';
 
 function PostInput(props){
 
-    const [post, setPost] = useState({
-        description: ''
-    })
+
 
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(post.description)
-        document.getElementById("reset").reset();
-        let newPost = {
-            ...post,
-            id: Date.now()
-        }
+        // document.getElementById("reset").reset();
 
-        props.addNewPost(newPost)
+
+
+
+   
          
     }
 
@@ -42,7 +38,7 @@ function PostInput(props){
 
     return(
         <div>
-            <div class='enter-post'>
+            <div className='enter-post'>
                 <form id='reset' onSubmit={handleSubmit}>
                     <h1>Welcome User</h1>
                     <input
