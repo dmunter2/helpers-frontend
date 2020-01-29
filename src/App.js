@@ -1,24 +1,19 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import {createStore} from 'redux'
-import { Route } from 'react-router-dom'
-import {connect} from 'react-redux';
 import PostForm from './components/PostForm'
-import {postReducer} from './reducers';
 
 
-function App() {
+const App = props => {
+
+
 
 
 
   return (
 
     <div className="App">
-      {/* <Route path='/' component={Posts} /> */}
       <PostForm />
     
-
     </div>
   );
 }
