@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import PostCard from './posts/PostCard';
-import PostForm from './posts/PostForm';
+import PostCard from './PostCard';
+import PostForm from './PostForm';
 
 
 function PostHolder(props){
