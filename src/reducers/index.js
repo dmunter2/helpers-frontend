@@ -4,8 +4,7 @@ const initialState = {
         name: 'billy'
     },
     posts: [
-        { title: 'I am upset' },
-        { title: 'I am not upset' },
+        
     ],
     movie: ['535234', '34moe', 'lar4ry'],
     editing: false
