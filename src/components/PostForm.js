@@ -5,37 +5,46 @@ import { addUserPost } from '../actions/postAction'
 
 
 
-const PostForm = props => {
+class PostForm extends React.Component {
 
-
-    const [state, setState] = useState({
+    state = {
         newPost: ''
-    })
-
-    const handleChanges = e => {
-        setState({newPost: e.target.value})
-    }
+    };
 
 
+    handleChanges = e => {
+        this.setState({ newPost: e.target.value });
+    };
 
 
+
+    render() {
         return(
             <React.Fragment>
             <div>
-                <div>User: {props.user}</div>
-                <div>To watch{props.movie}</div>
+          
 
                 <input
                     type='text'
                     placeholder='Post'
-                    onChange={handleChanges}
-                    value={state.newPost}
+                    value={this.state.newPost}
+                    onChange={this.handleChanges}
 
 
 
                 />
+                
 
-                {/* <button onClick={() => this.props.addUserPost(state.newPost)}>Add Post</button> */}
+                <button onClick={() => this.props.addUserPost(this.state.newPost)}>Add Post</button>
+
+                    {this.props.posts.map((post, index) => {
+                        return (
+                            <h4 key={index}>
+                                {post.title}
+                            </h4>
+                        )
+
+                    })}
 
 
             </div>
@@ -44,17 +53,18 @@ const PostForm = props => {
 
 
         )
+    }
+
 }
 
 
 
 const mapStateToProps = state => {
     return {
-        posts: state.posts,
-        movie: state.movie,
-        user: state.user
-    };
-};
+        user: state.user.name,
+        posts: state.posts
+    }
+}
 
 
 
@@ -62,6 +72,5 @@ export default connect(
     mapStateToProps,
     { addUserPost }
 )(PostForm);
-
 
 

@@ -1,7 +1,53 @@
-import { combineReducers } from 'redux'
-import { addUserPost} from '../actions/postAction'
+const initialState = {
+    otherproperties: '',
+    user: {
+        name: 'billy'
+    },
+    posts: [
+        { title: 'I am upset' },
+        { title: 'I am not upset' },
+    ],
+    movie: ['535234', '34moe', 'lar4ry'],
+    editing: false
+}
 
 
-export default combineReducers({
-    addUserPost
-})
+
+
+export const postReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case "ADD_POST":
+            return {
+                ...state,
+                posts: [
+                    ...state.posts,
+                    { title: action.payload }
+                ]
+            };
+        default:
+            return state;
+    }
+}
+
+// const initialState = {
+//     otherStateProperties: '',
+//     members: [
+//         { name: 'Justin T', dragonStatus: true },
+//         { name: 'Justin A', dragonStatus: false }
+//     ]
+// };
+
+// export const postReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case 'ADD_MEMBER':
+//             return {
+//                 ...state,
+//                 members: [
+//                     ...state.members,
+//                     { name: action.payload, dragonStatus: false }
+//                 ]
+//             };
+//         default:
+//             return state;
+//     }
+// };
