@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
-import PostForm from './components/PostForm'
-import Header from './components/Header'
-import { BrowserRouter } from 'react-router-dom';
+import HomePage from './components/HomePage'
+import PrivateRoute from './components/PrivateRoute'
+import {BrowserRouter, Route} from 'react-router-dom'
+import BeforeLogin from './components/beforeLogin/BeforeLogin';
 
-const App = props => {
+
+
+const App = () => {
 
 
 
@@ -13,21 +16,12 @@ const App = props => {
   return (
     <BrowserRouter>
 
-
-      <div className="App">
-        <Header />
-        <PostForm />
-
-
-
-      </div>
-      {/* <PrivateRoute /> */}
-
-
+      <Route exact path='/' component={BeforeLogin} />
+      <PrivateRoute path='/home' component={HomePage}/>
 
     </BrowserRouter>
 
-  );
+  )
 }
 
 
