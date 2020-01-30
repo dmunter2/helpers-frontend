@@ -37,7 +37,12 @@ align-items: center;
 
 
 `
-const DIV3 = Style.div``
+const DIV3 = Style.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
 
 const INPUT = Style.textarea`
 max-width: 250px;
