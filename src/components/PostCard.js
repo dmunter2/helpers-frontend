@@ -1,14 +1,18 @@
 import React from 'react';
+import Style from 'styled-components';
 
+const DIV = Style.div`
+background-color: gray;
+margin-top: 2%;
+`
 
 
 function PostCard(props){
 
-
     return(
-        <div>
-            <h1>Hello Post Card</h1>
-        </div>
+        <DIV>
+            {props.post}
+        </DIV>
     )
 }
 
