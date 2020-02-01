@@ -1,7 +1,9 @@
 import React from 'react';
 import Header2 from './Header2'
 import Style from 'styled-components';
-
+import axios from 'axios'
+import BeforeNews from './BeforeNews'
+import {Route} from 'react-router-dom'
 
 const DIV = Style.div`
 background-color: #F5F5F5;
@@ -15,13 +17,14 @@ flex-direction: column;
 `
 const Contain = Style.div`
 padding: 1%;
+display: flex;
+justify-content: center;
+align-items: center;
 `
 const MAIN = Style.div`
 display: flex;
-flex-direction: column;
-// justify-content: center;
-justify-content: space-around;
-// align-items: center;
+flex-direction: row;
+justify-content: center;
 `
 
 const DIV4 = Style.div`
@@ -36,7 +39,9 @@ border-radius: 5px;
 
 function BeforeLogin() {
 
-
+    
+    axios.get('https://seller-backends.herokuapp.com/')
+        .then()
 
 
 
@@ -44,18 +49,10 @@ function BeforeLogin() {
 
         return(
 
-            <MAIN>
+            <div>
                 <Header2 />
-
-                <Contain>
-                    <DIV>
-
-                    </DIV>
-                </Contain>
-          
-             
-
-            </MAIN>
+                <BeforeNews />
+            </div>
 
 
 
