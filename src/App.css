@@ -55,7 +55,41 @@
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+  margin-top: 30px;
 }
 .h1{
   color: white;
+}
+.underline{
+  border-bottom: 3px solid black;
+  padding: 0;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.no-underline{
+  border: none;
+  padding: 0;
+margin: 0;
+}
+
+.no-show{
+  display: none;
+}
+.loading-design{
+  text-align: center;
+  font-size: 2.3rem;
+  color: dodgerblue;
+}
+.loading-design1{
+  text-align: center;
+  font-size: 2.3rem;
+  color: dodgerblue;
+}
+.invalid{
+  border: 1px solid red;
+  padding: 2%;
+  width: 270px;
+  color: gray;
 }
