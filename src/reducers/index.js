@@ -1,13 +1,15 @@
 const initialState = {
     otherproperties: '',
-    user: {
-        name: 'billy'
-    },
+    users: [
+        
+    ],
     posts: [
         
     ],
     movie: ['535234', '34moe', 'lar4ry'],
-    editing: false
+    editing: false,
+
+
 }
 
 
@@ -23,10 +25,23 @@ export const postReducer = (state = initialState, action) => {
                     { title: action.payload }
                 ]
             };
-        default:
-            return state;
+
+        case "SAVE_USER":
+            return {
+                ...state.user,
+                users: [
+                    ...state.users,
+                    {name: action.payload}
+                ]
+            };
+            default:
+                return state;
     }
 }
+
+
+
+
 
 // const initialState = {
 //     otherStateProperties: '',

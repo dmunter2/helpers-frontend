@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { addUserPost } from '../actions/postAction'
+import { addUserPost } from '../actions/actions'
 import PostCard from './PostCard';
 import Style from 'styled-components';
 import Likes from './Likes'
+import axiosWithAuth from './axiosWithAuth';
 
 const DIV = Style.div`
 background-color: #F5F5F5;
@@ -77,20 +78,40 @@ height: 1000px;
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 border-radius: 5px;
 `
+const INPUT2 = Style.input``
 
 
 
 class PostForm extends React.Component {
 
     state = {
-        newPost: ''
+        title: '',
+        postdescript: ''
     };
 
 
-    handleChanges = e => {
-        this.setState({ newPost: e.target.value });
+    handleChanges1 = e => {
+        this.setState({ title: e.target.value });
+    };
+    handleChanges2 = e => {
+        this.setState({ postdescript: e.target.value });
     };
 
+    postForm = e => {
+        //  this.props.addUserPost(this.state.newPost)
+             axiosWithAuth()
+                .post('https://seller-backends.herokuapp.com/api/post/new', this.state)
+                .then(console.log('hello'))
+                .then(
+                    this.setState({
+                        title: '',
+                        postdescript: ''
+                    })
+                )
+                .catch(err => {
+                    console.log(err)
+                })
+    }
 
 
     render() {
@@ -100,26 +121,36 @@ class PostForm extends React.Component {
                 <DIV>
 
                     <DIV2>
+                        <INPUT2
+                            rows="5"
+                            type='textarea'
+                            placeholder='Post'
+                            value={this.state.title}
+                            onChange={this.handleChanges1}
+
+
+
+                        />
                         <INPUT
                             rows="5"
                             type='textarea'
                             placeholder='Post'
-                            value={this.state.newPost}
-                            onChange={this.handleChanges}
+                            value={this.state.postdescript}
+                            onChange={this.handleChanges2}
 
 
 
                         />
 
                     <HOLDER>
-                            <BUTTON onClick={() => this.props.addUserPost(this.state.newPost)}>Add Post</BUTTON>
+                            <BUTTON onClick={this.postForm}>Add Post</BUTTON>
                     </HOLDER>
                     </DIV2>
 
                     <DIV3>
                         {this.props.posts.map((post, index) => {
                             return (
-                                <PostCard post={post.title} />
+                                <PostCard key={index} post={post.title} />
                             )
 
                         })}
@@ -145,7 +176,7 @@ class PostForm extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user.name,
+        user: state.users.name,
         posts: state.posts
     }
 }

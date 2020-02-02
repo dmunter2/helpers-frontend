@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Style from 'styled-components';
 import Axios from 'axios';
-import axiosWithAuth from '../axiosWithAuth'
+import axiosWithAuth from '../components/axiosWithAuth'
 const DIV = Style.div`
 // margin-top: 25%;
 display: flex;
@@ -31,7 +31,6 @@ const BtnHolder = Style.div`
 width: 100%;
 display: flex;
 justify-content: end;
-margin-left: 17px;
 `
 const H1 = Style.h1`
 text-align: center;

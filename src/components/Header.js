@@ -1,7 +1,6 @@
 import React from 'react';
 import Style from 'styled-components';
 import SignOut from './SignOut';
-
 const DIV = Style.div`
 border: 1px solid #F5F5F5;
 background-color: #F5F5F5;
@@ -51,6 +50,7 @@ function Header(){
             <DIV1>
                 <H2>Welcome!</H2>
                 <SignOut />
+
             </DIV1>
 
         </DIV>
@@ -59,5 +59,7 @@ function Header(){
 
 
 
+
 export default Header;
+
 
