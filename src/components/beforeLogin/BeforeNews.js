@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Style from 'styled-components';
 import Axios from 'axios';
 import BeforeCard from './BeforeCard'
-import Login from '../login/Login';
-import Signup from '../login/Signup';
+import Login from '../../login/Login';
+import Signup from '../../login/Signup';
 
 
 const DIV = Style.div`
@@ -76,17 +76,16 @@ function BeforeNews() {
         signup: 'hidden'
     })
 
-      useEffect(() => {
-        Axios
-            .get('https://seller-backends.herokuapp.com/api/post')
-            .then(console.log('hello'))
-            .then(res => setPosts(res.data))
-            .then(() => setLoading('not-loading'))
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
+    //   useEffect(() => {
+    //     Axios
+    //         .get('https://seller-backends.herokuapp.com/api/post')
+    //         .then(res => setPosts(res.data))
+    //         .then(() => setLoading('not-loading'))
+    //         .then(res => console.log(res.data))
+    //         .catch(err => console.log(err))
 
 
-    }, [])
+    // }, [])
 
     const underline1 = e => {
         e.preventDefault()

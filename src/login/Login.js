@@ -1,6 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Style from 'styled-components';
-import axiosWithAuth from '../axiosWithAuth'
+import axiosWithAuth from '../components/axiosWithAuth'
+import { connect } from 'react-redux'
+import {addUserInfo} from '../actions/actions'
+import { createStore } from 'redux';
+
+
 const DIV = Style.div`
 // margin-top: 25%;
 display: flex;
@@ -56,6 +61,9 @@ function Login() {
         retry: 'no-show'
     })
 
+    const [user, setUser] = useState()
+
+
     const Login = e => {
         e.preventDefault()
         setLoading({
@@ -67,7 +75,9 @@ function Login() {
                 .then((res) => {
                     localStorage.setItem('token', res.data.token)
                     localStorage.setItem('user', res.data.user_id)
-                    window.location.href = '/home'
+                    localStorage.setItem('new', res.data.username)
+                    // window.location.href = '/home'
+
                     
                 })
                 .then(() => {
@@ -128,4 +138,16 @@ function Login() {
 }
 
 
-export default Login;
+const mapStateToProps = state => {
+    return {
+        user: state.users,
+        posts: state.posts
+    }
+}
+
+
+
+export default connect(
+    mapStateToProps,
+    { addUserInfo }
+)(Login);
