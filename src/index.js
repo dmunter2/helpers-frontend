@@ -6,9 +6,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider}  from 'react-redux'
 import {createStore} from 'redux';
-import {postReducer} from './reducers/index'
+import allReducers from './reducers'
 
-const store = createStore(postReducer);
+const store = createStore(allReducers);
 const rootElement = document.getElementById('root')
 
 

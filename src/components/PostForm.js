@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { addUserPost } from '../actions/actions'
+import combineReducers from '../reducers/index'
 import PostCard from './PostCard';
 import Style from 'styled-components';
 import Likes from './Likes'
@@ -115,6 +116,8 @@ class PostForm extends React.Component {
 
 
     render() {
+
+        console.log(this.props.posts)
         return(
             <MAIN>
           
@@ -148,12 +151,14 @@ class PostForm extends React.Component {
                     </DIV2>
 
                     <DIV3>
-                        {this.props.posts.map((post, index) => {
+                        {/* {this.props.posts.map((post, index) => {
                             return (
                                 <PostCard key={index} post={post.title} />
                             )
 
-                        })}
+                        })} */}
+                        {this.props.posts}
+                        <h1>{this.props.posts}</h1>
                     </DIV3>
                              
 
@@ -176,7 +181,6 @@ class PostForm extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.users.name,
         posts: state.posts
     }
 }
@@ -185,7 +189,7 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { addUserPost }
+    { combineReducers }
 )(PostForm);
 
 

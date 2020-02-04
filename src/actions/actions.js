@@ -6,7 +6,10 @@ export const addUserPost = newPost => {
 
 
 export const addUserInfo = userInfo => {
-    return { type: 'SAVE_USER', payload: userInfo };
+    return { 
+        type: 'SAVE_USER', 
+        payload: userInfo 
+    };
 };
 
 
