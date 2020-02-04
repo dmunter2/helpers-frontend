@@ -1,67 +1,17 @@
-const initialState = {
-    otherproperties: '',
-    users: [
-        
-    ],
-    posts: [
-        
-    ],
-    movie: ['535234', '34moe', 'lar4ry'],
-    editing: false,
 
+// combineReducers is the function that will combine all your seperate reducers into one
+import { combineReducers } from 'redux';
 
-}
+// make sure to import all the different reducers that you want to combine
+import postReducer from './postReducer'
+import userReducer from './userReducer'
 
-
-
-
-export const postReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case "ADD_POST":
-            return {
-                ...state,
-                posts: [
-                    ...state.posts,
-                    { title: action.payload }
-                ]
-            };
-
-        case "SAVE_USER":
-            return {
-                ...state.user,
-                users: [
-                    ...state.users,
-                    {name: action.payload}
-                ]
-            };
-            default:
-                return state;
-    }
-}
+// notice that combineReducers takes an OBJECT (see the {}?)...
+// inside that object are your reducers that you want to combine
+export default combineReducers({
+    postReducer, // NOTE: storeReducer like this is just shorthand for storeReducer: storeReducer
+    userReducer
+});
 
 
 
-
-
-// const initialState = {
-//     otherStateProperties: '',
-//     members: [
-//         { name: 'Justin T', dragonStatus: true },
-//         { name: 'Justin A', dragonStatus: false }
-//     ]
-// };
-
-// export const postReducer = (state = initialState, action) => {
-//     switch (action.type) {
-//         case 'ADD_MEMBER':
-//             return {
-//                 ...state,
-//                 members: [
-//                     ...state.members,
-//                     { name: action.payload, dragonStatus: false }
-//                 ]
-//             };
-//         default:
-//             return state;
-//     }
-// };

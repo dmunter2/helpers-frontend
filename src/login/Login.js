@@ -48,7 +48,8 @@ const CONTAIN = Style.div`
 display: flex;
 flex-direction: column;
 `
-function Login() {
+
+function Login(props) {
 
     const [credentials, setCredentials] = useState({
         username: '',
@@ -61,7 +62,9 @@ function Login() {
         retry: 'no-show'
     })
 
-    const [user, setUser] = useState()
+    const [user, setUser] = useState({
+        username: ''
+    })
 
 
     const Login = e => {
@@ -76,9 +79,11 @@ function Login() {
                     localStorage.setItem('token', res.data.token)
                     localStorage.setItem('user', res.data.user_id)
                     localStorage.setItem('new', res.data.username)
-                    // window.location.href = '/home'
-
+                    window.location.href = '/home'
                     
+                })
+                .then(() => {
+                    props.addUserInfo(user.username)
                 })
                 .then(() => {
                     setLoading({
@@ -93,13 +98,26 @@ function Login() {
                     })
                 })
     }
-    const changeHandler = e => {
+    const changeHandler1 = e => {
+        e.preventDefault()
+        setCredentials({
+            ...credentials,
+            [e.target.name]: e.target.value
+        })
+        setUser({
+            ...user,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const changeHandler2 = e => {
         e.preventDefault()
         setCredentials({
             ...credentials,
             [e.target.name]: e.target.value
         })
     }
+
     
 
 
@@ -114,7 +132,7 @@ function Login() {
 
                 <INPUT
                     type='text'
-                    onChange={changeHandler}
+                    onChange={changeHandler1}
                     value={credentials.username}
                     name='username'    
                     placeholder='username'
@@ -122,7 +140,7 @@ function Login() {
 
                 <INPUT
                     type='password'
-                    onChange={changeHandler}
+                    onChange={changeHandler2}
                     value={credentials.password}
                     name='password'
                     placeholder='password'
@@ -140,7 +158,6 @@ function Login() {
 
 const mapStateToProps = state => {
     return {
-        user: state.users,
         posts: state.posts
     }
 }
