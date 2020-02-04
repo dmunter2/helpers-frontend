@@ -30,6 +30,8 @@ border: none;
 color: white;
 border-radius: 5px;
 
+
+
 `
 const BtnHolder = Style.div`
 width: 100%;
