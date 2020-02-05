@@ -37,8 +37,8 @@ function PostCard(props){
     return(
         <DIV>
             <DIV1>
-            {props.post}
-
+                    {props.title}
+                {props.postdescript}
 
             </DIV1>
 
@@ -47,12 +47,13 @@ function PostCard(props){
             <DIV3>
 
                 <LIKE>
-                    <H1>Practice</H1>
+
+                    
                 </LIKE>
 
 
                 <COMMENT>
-                    <H2>Practice</H2>
+
                 </COMMENT>
 
             </DIV3>

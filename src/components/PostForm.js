@@ -90,7 +90,6 @@ class PostForm extends React.Component {
         postdescript: ''
     };
 
-
     handleChanges1 = e => {
         this.setState({ title: e.target.value });
     };
@@ -98,11 +97,15 @@ class PostForm extends React.Component {
         this.setState({ postdescript: e.target.value });
     };
 
+
+
+    
     postForm = e => {
+        e.preventDefault()
         //  this.props.addUserPost(this.state.newPost)
              axiosWithAuth()
                 .post('https://seller-backends.herokuapp.com/api/post/new', this.state)
-                .then(console.log('hello'))
+                .then(this.props.addUserPost(this.state))
                 .then(
                     this.setState({
                         title: '',
@@ -117,7 +120,6 @@ class PostForm extends React.Component {
 
     render() {
 
-        console.log(this.props.posts)
         return(
             <MAIN>
           
@@ -151,14 +153,12 @@ class PostForm extends React.Component {
                     </DIV2>
 
                     <DIV3>
-                        {/* {this.props.posts.map((post, index) => {
+                        {this.props.store.posts.map((post, index) => {
                             return (
-                                <PostCard key={index} post={post.title} />
+                                <PostCard key={index} title={post.title} postdescript={post.postdescript}/>
                             )
 
-                        })} */}
-                        {this.props.posts}
-                        <h1>{this.props.posts}</h1>
+                        })}
                     </DIV3>
                              
 
@@ -178,18 +178,12 @@ class PostForm extends React.Component {
 }
 
 
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        posts: state.posts
+        store: state.postReducer
     }
 }
 
-
-
-export default connect(
-    mapStateToProps,
-    { combineReducers }
-)(PostForm);
+export default connect(mapStateToProps, { addUserPost })(PostForm);
 
 

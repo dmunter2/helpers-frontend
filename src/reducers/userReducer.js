@@ -1,5 +1,8 @@
+import {SAVE_USER} from '../actions/actionTypes'
+
+
 const initialState = {
-    otherproperties: '',
+    otherproperties: 'Its working',
     users: []
 
 
@@ -9,11 +12,13 @@ const initialState = {
 
 export const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "SAVE_USER":
+        case SAVE_USER:
+            const {username, password} = action.payload   
             return {
-                ...state.user,
+                ...state,
                 users: [
-                    {name: action.payload}
+                    ...state.users,
+                    {username: username}
                 ]
             };
         default:
