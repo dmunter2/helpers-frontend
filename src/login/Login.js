@@ -71,34 +71,38 @@ function Login(props) {
 
     const Login = e => {
         e.preventDefault()
+        props.addUserInfo('devon')
+
         setLoading({
             loading: 'loading-design1',
             retry: 'no-show'
         })
-            axiosWithAuth()
-                .post('https://seller-backends.herokuapp.com/api/login', credentials)
-                .then((res) => {
-                    localStorage.setItem('token', res.data.token)
-                    localStorage.setItem('user', res.data.user_id)
-                    localStorage.setItem('new', res.data.username)
-                    window.location.href = '/home'
-                    
+        axiosWithAuth()
+            .post('https://seller-backends.herokuapp.com/api/login', credentials)
+            .then(props.addUserInfo('devon'))
+            .then((res) => {
+                localStorage.setItem('token', res.data.token)
+                localStorage.setItem('user', res.data.user_id)
+                localStorage.setItem('new', res.data.username)
+                window.location.href = '/home'
+                
+            })
+            .then(() => {
+                setLoading({
+                    loading: 'no-show',
+                    retry: 'no-show'
                 })
-                .then(() => {
-                    props.addUserInfo(user.username)
+            })
+            .catch(() => {
+                setLoading({
+                    loading: 'no-show',
+                    retry: 'invalid'
                 })
-                .then(() => {
-                    setLoading({
-                        loading: 'no-show',
-                        retry: 'no-show'
-                    })
-                })
-                .catch(() => {
-                    setLoading({
-                        loading: 'no-show',
-                        retry: 'invalid'
-                    })
-                })
+            })
+
+
+        
+
     }
     const changeHandler1 = e => {
         e.preventDefault()
@@ -158,15 +162,11 @@ function Login(props) {
 }
 
 
-const mapStateToProps = state => {
-    return {
-        posts: state.posts
-    }
-}
+
 
 
 
 export default connect(
-    mapStateToProps,
+    null,
     { addUserInfo }
 )(Login);

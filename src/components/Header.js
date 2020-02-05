@@ -2,7 +2,10 @@ import React from 'react';
 import Style from 'styled-components';
 import SignOut from './SignOut';
 import {connect} from 'react-redux';
+
 import {addUserInfo} from '../actions/actions'
+
+
 const DIV = Style.div`
 border: 1px solid #F5F5F5;
 background-color: #F5F5F5;
@@ -49,7 +52,9 @@ class Header extends React.Component {
 
 
     render(){ 
+        console.log(this.props.store)
 
+        console.log('hello')
         return(
 
             <DIV>
@@ -58,11 +63,12 @@ class Header extends React.Component {
                 <DIV1>
                     <H2>Welcome!</H2>
                     <SignOut />
-                    {/* {this.props.users.map((user) => {
+                    {this.props.store.users.map((user) => {
                         return (
-                            <h1>{user}</h1>
+                            console.log(user.user),
+                            console.log('hello')
                         )
-                    })} */}
+                    })}
         
                             
         
@@ -80,7 +86,7 @@ class Header extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        users: state.users
+        store: state.userReducer
     }
 }
 
@@ -88,7 +94,7 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { addUserInfo }
+    { addUserInfo}
 )(Header);
 
 
