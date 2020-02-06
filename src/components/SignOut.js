@@ -5,6 +5,8 @@ const DIV = Style.div`
 `
 const H1 = Style.h1`
 margin: 0;
+font-size: 1.5rem;
+
 `
 
 function SignOut(){

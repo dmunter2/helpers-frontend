@@ -20,27 +20,24 @@ margin: 0;
 margin-left: 4%;
 text-align: initial;
 color: #25282a;
-font-size: 2rem;
-// width: 40%;
+font-size: 1.5rem;
 margin-right: 0;
+width: 200px;
 `
-const H2 = Style.h1`
-margin: 0;
-margin-right: 3%;
 
-text-align: end;
-color: #5eb0e5;
-font-size: 2rem;
-`
 const DIV1 = Style.div`
 margin: 0;
 display: flex;
 margin-right: 5%;
 flex-direction: row;
 text-align: end;
+
 justify-content: space-between;
 `
-
+const MAIN = Style.div`
+display: flex;
+flex-direction: row;
+`
 
 class Header extends React.Component {
     
@@ -59,13 +56,18 @@ class Header extends React.Component {
                 <H1>Post-It</H1>
 
                 <DIV1>
-                    <H2>Welcome!</H2>
-                    <SignOut />
                     {this.props.store.users.map((user) => {
                         return (
-                            <h1>{user.name}</h1>
+                            <MAIN>
+
+                                <H1>Welcome, {user.name}</H1>
+                            </MAIN>
+                         
                         )
                     })}
+
+                <SignOut />
+
         
                             
         

@@ -3,7 +3,7 @@ import Style from 'styled-components';
 import axiosWithAuth from '../components/axiosWithAuth'
 import { connect } from 'react-redux'
 import { addUserInfo } from '../actions/actions'
-
+import {useSelector, useDispatch } from 'react-redux';
 
 const DIV = Style.div`
 // margin-top: 25%;
@@ -64,7 +64,7 @@ function Login(props) {
     })
 
     const [user, setUser] = useState({
-        username: 'e32r23r23'
+        username: credentials.username
     })
 
 
@@ -97,6 +97,7 @@ function Login(props) {
                     retry: 'invalid'
                 })
             })
+            props.addUserInfo(user)
 
     }
     const changeHandler1 = e => {
@@ -163,3 +164,8 @@ export default connect(
     null,
     { addUserInfo }
 )(Login);
+
+
+
+
+
