@@ -4,8 +4,9 @@ import { addUserPost } from '../actions/actions'
 // import combineReducers from '../reducers/index'
 import PostCard from './PostCard';
 import Style from 'styled-components';
-import Likes from './Likes'
 import axiosWithAuth from './axiosWithAuth';
+import Profile from './Profile';
+
 
 const DIV = Style.div`
 background-color: #F5F5F5;
@@ -79,7 +80,16 @@ height: 1000px;
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 border-radius: 5px;
 `
-const INPUT2 = Style.input``
+const INPUT2 = Style.input`
+max-width: 250px;
+width: 250px;
+border: none;
+border-radius: 5px;
+background-color: #e4e4e2;
+padding: 2%;
+font-family: 'Open Sans', sans-serif;
+font-size: .8rem;
+`
 
 
 
@@ -129,7 +139,7 @@ class PostForm extends React.Component {
                         <INPUT2
                             rows="5"
                             type='textarea'
-                            placeholder='Post'
+                            placeholder='Title'
                             value={this.state.title}
                             onChange={this.handleChanges1}
 
@@ -165,7 +175,7 @@ class PostForm extends React.Component {
                            
                 </DIV>
                 <DIV4>
-                    <Likes />
+                    <Profile />
                 </DIV4>
 
             </MAIN>

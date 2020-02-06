@@ -2,6 +2,7 @@ import React from 'react';
 import Style from 'styled-components';
 import SignOut from './SignOut';
 import {connect} from 'react-redux';
+import { addUserInfo } from '../actions/actions'
 
 
 
@@ -40,15 +41,26 @@ flex-direction: row;
 `
 
 class Header extends React.Component {
-    
-    
 
 
+    constructor(props){
+        super(props)
+
+
+
+    }
+    
+    componentDidMount(){
+        this.props.addUserInfo(this.store.users)
+    }
 
 
 
     render(){ 
         console.log(this.props.store)
+
+
+        // console.log(localStorage.getItem('new'))
 
         return(
 
@@ -57,6 +69,7 @@ class Header extends React.Component {
 
                 <DIV1>
                     {this.props.store.users.map((user) => {
+                        console.log(user)
                         return (
                             <MAIN>
 
@@ -83,7 +96,7 @@ class Header extends React.Component {
 
 
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         store: state.reducer
     }
@@ -91,7 +104,7 @@ const mapStateToProps = state => {
 
 
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { addUserInfo })(Header);
 
 
 

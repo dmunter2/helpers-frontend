@@ -3,7 +3,6 @@ import {ADD_POST, SAVE_USER} from '../actions/actionTypes'
 const initialState = {
     otherproperties: '',
     users: [
-        {name: 'devon'}
     ],
     posts: [
         
