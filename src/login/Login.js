@@ -3,7 +3,6 @@ import Style from 'styled-components';
 import axiosWithAuth from '../components/axiosWithAuth'
 import { connect } from 'react-redux'
 import { addUserInfo } from '../actions/actions'
-import {useSelector, useDispatch } from 'react-redux';
 
 const DIV = Style.div`
 // margin-top: 25%;
@@ -68,6 +67,7 @@ function Login(props) {
     })
 
 
+
     const Login = e => {
         e.preventDefault()
 
@@ -97,7 +97,6 @@ function Login(props) {
                     retry: 'invalid'
                 })
             })
-            props.addUserInfo(user)
 
     }
     const changeHandler1 = e => {

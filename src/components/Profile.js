@@ -1,16 +1,16 @@
 import React from 'react';
 
 
-function Likes(){
+function Profile(){
 
 
     return(
         <div>
-            <h1>Hello</h1>
+            <h1>Helergerlo</h1>
         </div>
     )
 }
 
 
-export default Likes;
+export default Profile;
 
