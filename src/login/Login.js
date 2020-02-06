@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import Style from 'styled-components';
 import axiosWithAuth from '../components/axiosWithAuth'
 import { connect } from 'react-redux'
-import {addUserInfo} from '../actions/actions'
-import { createStore } from 'redux';
+import { addUserInfo } from '../actions/actions'
 
 
 const DIV = Style.div`
@@ -65,13 +64,12 @@ function Login(props) {
     })
 
     const [user, setUser] = useState({
-        username: ''
+        username: 'e32r23r23'
     })
 
 
     const Login = e => {
         e.preventDefault()
-        props.addUserInfo('devon')
 
         setLoading({
             loading: 'loading-design1',
@@ -79,7 +77,7 @@ function Login(props) {
         })
         axiosWithAuth()
             .post('https://seller-backends.herokuapp.com/api/login', credentials)
-            .then(props.addUserInfo('devon'))
+            .then(addUserInfo(user))
             .then((res) => {
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('user', res.data.user_id)
@@ -99,9 +97,6 @@ function Login(props) {
                     retry: 'invalid'
                 })
             })
-
-
-        
 
     }
     const changeHandler1 = e => {
@@ -160,8 +155,6 @@ function Login(props) {
         </DIV>
     )
 }
-
-
 
 
 
