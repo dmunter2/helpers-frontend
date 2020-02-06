@@ -1,7 +1,10 @@
-import {ADD_POST} from '../actions/actionTypes'
+import {ADD_POST, SAVE_USER} from '../actions/actionTypes'
 
 const initialState = {
     otherproperties: '',
+    users: [
+        {name: 'devon'}
+    ],
     posts: [
         
     ]
@@ -11,7 +14,7 @@ const initialState = {
 
  
 
-export const postReducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             const { title, postdescript} = action.payload
@@ -23,6 +26,16 @@ export const postReducer = (state = initialState, action) => {
                     postdescript: postdescript}
                 ]
             };
+
+        case SAVE_USER:
+            return {
+                ...state,
+                users: [
+                    ...state.users,
+                    {name: action.payload}
+
+                ]
+            };
         default:
             return state;
     }
@@ -32,4 +45,4 @@ export const postReducer = (state = initialState, action) => {
 
 
 
-export default postReducer;
+export default reducer;

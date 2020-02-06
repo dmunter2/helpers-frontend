@@ -1,7 +1,7 @@
 import React from 'react';
 import Header2 from './Header2'
 import Style from 'styled-components';
-import axios from 'axios'
+// import axios from 'axios'
 import BeforeNews from './BeforeNews'
 
 const DIV = Style.div``

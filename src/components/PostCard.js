@@ -16,14 +16,7 @@ border-top: 1px solid black;
 const LIKE = Style.div`
 margin: 0;
 `
-const H1 = Style.h1`
-margin: 0;
-font-size: 1rem;
-`
-const H2 = Style.h1`
-margin: 0;
-font-size: 1rem;
-`
+
 const DIV1 = Style.div`
 height: 50px;
 `

@@ -3,7 +3,6 @@ import Style from 'styled-components';
 import SignOut from './SignOut';
 import {connect} from 'react-redux';
 
-import {addUserInfo} from '../actions/actions'
 
 
 const DIV = Style.div`
@@ -21,27 +20,24 @@ margin: 0;
 margin-left: 4%;
 text-align: initial;
 color: #25282a;
-font-size: 2rem;
-// width: 40%;
+font-size: 1.5rem;
 margin-right: 0;
+width: 200px;
 `
-const H2 = Style.h1`
-margin: 0;
-margin-right: 3%;
 
-text-align: end;
-color: #5eb0e5;
-font-size: 2rem;
-`
 const DIV1 = Style.div`
 margin: 0;
 display: flex;
 margin-right: 5%;
 flex-direction: row;
 text-align: end;
+
 justify-content: space-between;
 `
-
+const MAIN = Style.div`
+display: flex;
+flex-direction: row;
+`
 
 class Header extends React.Component {
     
@@ -54,21 +50,24 @@ class Header extends React.Component {
     render(){ 
         console.log(this.props.store)
 
-        console.log('hello')
         return(
 
             <DIV>
                 <H1>Post-It</H1>
 
                 <DIV1>
-                    <H2>Welcome!</H2>
-                    <SignOut />
                     {this.props.store.users.map((user) => {
                         return (
-                            console.log(user.user),
-                            console.log('hello')
+                            <MAIN>
+
+                                <H1>Welcome, {user.name}</H1>
+                            </MAIN>
+                         
                         )
                     })}
+
+                <SignOut />
+
         
                             
         
@@ -86,16 +85,13 @@ class Header extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        store: state.userReducer
+        store: state.reducer
     }
 }
 
 
 
-export default connect(
-    mapStateToProps,
-    { addUserInfo}
-)(Header);
+export default connect(mapStateToProps)(Header);
 
 
 
