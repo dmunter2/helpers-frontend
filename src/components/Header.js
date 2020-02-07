@@ -50,14 +50,13 @@ class Header extends React.Component {
 
     }
     
-    componentDidMount(){
-        this.props.addUserInfo(this.store.users)
-    }
+    // componentDidMount(){
+    //     this.props.addUserInfo(this.store.users)
+    // }
 
 
 
     render(){ 
-        console.log(this.props.store)
 
 
         // console.log(localStorage.getItem('new'))
@@ -68,16 +67,10 @@ class Header extends React.Component {
                 <H1>Post-It</H1>
 
                 <DIV1>
-                    {this.props.store.users.map((user) => {
-                        console.log(user)
-                        return (
-                            <MAIN>
+                    <MAIN>
 
-                                <H1>Welcome, {user.name}</H1>
-                            </MAIN>
-                         
-                        )
-                    })}
+                        <H1>Welcome, {localStorage.getItem('new')}</H1>
+                    </MAIN>
 
                 <SignOut />
 

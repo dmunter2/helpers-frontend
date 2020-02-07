@@ -76,16 +76,16 @@ function BeforeNews() {
         signup: 'hidden'
     })
 
-      useEffect(() => {
-        Axios
-            .get('https://seller-backends.herokuapp.com/api/post')
-            .then(res => setPosts(res.data))
-            .then(() => setLoading('not-loading'))
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
+    //   useEffect(() => {
+    //     Axios
+    //         .get('https://seller-backends.herokuapp.com/api/post')
+    //         .then(res => setPosts(res.data))
+    //         .then(() => setLoading('not-loading'))
+    //         .then(res => console.log(res.data))
+    //         .catch(err => console.log(err))
 
 
-    }, [])
+    // }, [])
 
     const underline1 = e => {
         e.preventDefault()
