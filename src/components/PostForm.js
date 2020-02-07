@@ -112,6 +112,9 @@ class PostForm extends React.Component {
     
     postForm = e => {
         e.preventDefault()
+        if(this.state.title === '' || this.state.postdescript === ''){
+            alert('Make sure you enter a title and a description')
+        } else {
 
             axiosWithAuth()
                 .post('https://seller-backends.herokuapp.com/api/post/new', this.state)
@@ -125,6 +128,8 @@ class PostForm extends React.Component {
                 .catch(err => {
                     console.log(err)
                 })
+        }
+
     }
 
 

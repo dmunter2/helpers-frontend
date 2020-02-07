@@ -93,3 +93,8 @@ margin: 0;
   width: 270px;
   color: gray;
 }
+
+
+.no-show{
+  display: none;
+}
