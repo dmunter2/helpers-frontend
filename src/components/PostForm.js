@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { addUserPost } from '../actions/actions'
 // import combineReducers from '../reducers/index'
+import axios from 'axios';
 import PostCard from './PostCard';
 import Style from 'styled-components';
 import axiosWithAuth from './axiosWithAuth';
@@ -94,11 +95,27 @@ font-size: .8rem;
 
 
 class PostForm extends React.Component {
-
     state = {
         title: '',
-        postdescript: ''
+        postdescript: '',
+        users: []
     };
+
+
+    // componentDidMount(){
+
+    //     axiosWithAuth()
+    //         .get('https://seller-backends.herokuapp.com/api/post')
+    //         .then(res => {
+    //             const users = res.data;
+    //             this.setState({ users })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    //     })}
+    
+
+
 
     handleChanges1 = e => {
         this.setState({ title: e.target.value });
@@ -135,6 +152,7 @@ class PostForm extends React.Component {
 
     render() {
 
+
         return(
             <MAIN>
           
@@ -148,8 +166,6 @@ class PostForm extends React.Component {
                             value={this.state.title}
                             onChange={this.handleChanges1}
 
-
-
                         />
                         <INPUT
                             rows="5"
@@ -157,8 +173,6 @@ class PostForm extends React.Component {
                             placeholder='Post'
                             value={this.state.postdescript}
                             onChange={this.handleChanges2}
-
-
 
                         />
 
