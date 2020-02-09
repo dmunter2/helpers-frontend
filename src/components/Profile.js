@@ -7,19 +7,16 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 `
-const DIV1 = Style.div`
-border: 1px solid red;
-width: 33%;
-`
-const H1 = Style.h1`
-font-size: 1rem;
-`
+
 const Text = Style.div``
 const DIV2 = Style.div``
 
 const Button = Style.div`
 border: 1px solid red;
 width: 33%;
+`
+const H1 = Style.h1`
+padding-left: 2%;
 `
 
 
@@ -33,23 +30,24 @@ function Profile(){
         comments: 'no-show'
 })
 
+    const [post, setPost] = useState([])
 
 
     const clickHandler = e => {
         e.preventDefault();
-        if (e.target.className === 'sc-fzXfMv cZKloc posts'){
+        if (e.target.className === 'sc-fzXfLW hXsOxE posts'){
             setDisplay({
                 posts: 'show',
                 likes: 'no-show',
                 comments: 'no-show'
             })
-        } else if (e.target.className === 'sc-fzXfMv cZKloc likes') {
+        } else if (e.target.className === 'sc-fzXfLW hXsOxE likes') {
             setDisplay({
                 posts: 'no-show',
                 likes: 'show',
                 comments: 'no-show'
             })
-        } else if (e.target.className === 'sc-fzXfMv cZKloc comments') {
+        } else if (e.target.className === 'sc-fzXfLW hXsOxE comments') {
             setDisplay({
                 posts: 'no-show',
                 likes: 'no-show',
@@ -64,7 +62,7 @@ function Profile(){
 
     return(
         <div>
-            <h1>Helergerlo</h1>
+            <H1>{window.localStorage.getItem('new')}</H1>
 
 
 

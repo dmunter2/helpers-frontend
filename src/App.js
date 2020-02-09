@@ -17,9 +17,9 @@ const App = () => {
     <BrowserRouter>
 
       <Route exact path='/' component={BeforeLogin} />
-      <Route exact path='/home' component={HomePage} />
+      {/* <Route exact path='/home' component={HomePage} /> */}
 
-      <PrivateRoute path='/hom23e' component={HomePage}/>
+      <PrivateRoute path='/home' component={HomePage}/>
 
     </BrowserRouter>
 

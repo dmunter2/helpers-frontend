@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { addUserPost } from '../actions/actions'
 // import combineReducers from '../reducers/index'
-import axios from 'axios';
+// import axios from 'axios';
 import PostCard from './PostCard';
 import Style from 'styled-components';
 import axiosWithAuth from './axiosWithAuth';
@@ -12,7 +12,7 @@ import Profile from './Profile';
 const DIV = Style.div`
 background-color: #F5F5F5;
 width: 60%;
-height: 1000px;
+height: 100%;
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 border-radius: 5px;
 display: flex;
@@ -27,6 +27,9 @@ justify-content: space-around;
 // align-items: center;
 padding-left: 1%;
 padding-right: 1%;
+padding-bottom: 4%;
+height: 100%;
+border: 1px solid green;
 `
 const DIV2 = Style.div`
 // background-color: blue;
@@ -46,6 +49,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+padding-bottom: 4%;
 `
 
 const INPUT = Style.textarea`
@@ -77,7 +81,6 @@ margin: 10px 25px 0 0;
 const DIV4 = Style.div`
 width: 35%;
 background-color: #F5F5F5;
-height: 1000px;
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 border-radius: 5px;
 `
@@ -95,10 +98,12 @@ font-size: .8rem;
 
 
 class PostForm extends React.Component {
+
+
     state = {
         title: '',
         postdescript: '',
-        users: []
+        // users: []
     };
 
 
@@ -106,13 +111,11 @@ class PostForm extends React.Component {
 
     //     axiosWithAuth()
     //         .get('https://seller-backends.herokuapp.com/api/post')
-    //         .then(res => {
-    //             const users = res.data;
-    //             this.setState({ users })
+    //         .then(console.log(this.state.users))
     //         .catch(err => {
     //             console.log(err)
     //         })
-    //     })}
+    // }
     
 
 
@@ -128,7 +131,6 @@ class PostForm extends React.Component {
 
     
     postForm = e => {
-        e.preventDefault()
         if(this.state.title === '' || this.state.postdescript === ''){
             alert('Make sure you enter a title and a description')
         } else {
@@ -145,8 +147,8 @@ class PostForm extends React.Component {
                 .catch(err => {
                     console.log(err)
                 })
+                .then(window.location = '/home')
         }
-
     }
 
 
@@ -176,18 +178,14 @@ class PostForm extends React.Component {
 
                         />
 
-                    <HOLDER>
-                            <BUTTON onClick={this.postForm}>Add Post</BUTTON>
-                    </HOLDER>
+                        <HOLDER>
+                                <BUTTON onClick={this.postForm}>Add Post</BUTTON>
+                        </HOLDER>
+
                     </DIV2>
 
                     <DIV3>
-                        {this.props.store.posts.map((post, index) => {
-                            return (
-                                <PostCard key={index} title={post.title} postdescript={post.postdescript}/>
-                            )
-
-                        })}
+                        <PostCard />
                     </DIV3>
                              
 
