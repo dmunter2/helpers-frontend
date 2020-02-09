@@ -147,7 +147,7 @@ class PostForm extends React.Component {
                 .catch(err => {
                     console.log(err)
                 })
-                .then(this.forceUpdate())
+                .then(window.location = '/home')
         }
     }
 

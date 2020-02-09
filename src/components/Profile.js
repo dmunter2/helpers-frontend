@@ -15,6 +15,9 @@ const Button = Style.div`
 border: 1px solid red;
 width: 33%;
 `
+const H1 = Style.h1`
+padding-left: 2%;
+`
 
 
 
@@ -27,6 +30,7 @@ function Profile(){
         comments: 'no-show'
 })
 
+    const [post, setPost] = useState([])
 
 
     const clickHandler = e => {
@@ -58,7 +62,7 @@ function Profile(){
 
     return(
         <div>
-            <h1>Helergerlo</h1>
+            <H1>{window.localStorage.getItem('new')}</H1>
 
 
 
