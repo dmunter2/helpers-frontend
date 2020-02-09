@@ -10,8 +10,8 @@ function PostHolder(props){
     return(
         <div>
             <h1>Welcome</h1>
-            <PostCard />
-            <PostForm />
+            {/* <PostCard /> */}
+            {/* <PostForm /> */}
         </div>
     )
 }

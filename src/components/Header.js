@@ -42,13 +42,6 @@ flex-direction: row;
 
 class Header extends React.Component {
 
-
-    constructor(props){
-        super(props)
-
-
-
-    }
     
     // componentDidMount(){
     //     this.props.addUserInfo(this.store.users)
