@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux'
 import { addUserPost } from '../actions/actions'
 // import combineReducers from '../reducers/index'
@@ -97,62 +97,82 @@ font-size: .8rem;
 
 
 
-class PostForm extends React.Component {
+function PostForm(){
 
 
-    state = {
+    const [state, setState] = useState({
         title: '',
         postdescript: '',
-        // users: []
-    };
+    })
+
+    const [api, setApi] = useState([])
 
 
-    // componentDidMount(){
 
-    //     axiosWithAuth()
-    //         .get('https://seller-backends.herokuapp.com/api/post')
-    //         .then(console.log(this.state.users))
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
+    useEffect(() => {
+        axiosWithAuth()
+            .get('https://seller-backends.herokuapp.com/api/post')
+            .then(res => {
+                let data = res.data.slice(Math.max(res.data.length - 5))
+                setApi(data)
+            })
+            .then(res => console.log(res.data))
+            .catch(err => {
+                console.log(err)
+            })
+     
+    }, [])
+
+
+      
     
 
 
 
-    handleChanges1 = e => {
-        this.setState({ title: e.target.value });
+    const handleChanges1 = e => {
+        setState({ title: e.target.value });
     };
-    handleChanges2 = e => {
-        this.setState({ postdescript: e.target.value });
+    const handleChanges2 = e => {
+        setState({ postdescript: e.target.value });
     };
 
 
 
     
-    postForm = e => {
-        if(this.state.title === '' || this.state.postdescript === ''){
+    const postForm = e => {
+        if(state.title === '' || state.postdescript === ''){
             alert('Make sure you enter a title and a description')
         } else {
 
             axiosWithAuth()
-                .post('https://seller-backends.herokuapp.com/api/post/new', this.state)
-                .then(this.props.addUserPost(this.state))
-                .then(
-                    this.setState({
+                .post('https://seller-backends.herokuapp.com/api/post/new', state)
+                // .then(props.addUserPost(this.state))
+                .then(() => {
+                    setState({
                         title: '',
                         postdescript: ''
                     })
+                }
+                 
                 )
+                // .then(
+                //     axiosWithAuth()
+                //         .get('https://seller-backends.herokuapp.com/api/post')
+                //         .then(res => {
+                //             let data = res.data.slice(Math.max(res.data.length - 5))
+                //             setApi(data)
+                //         })
+                //         .catch(err => {
+                //             console.log(err)
+                //         })
+                // )
                 .catch(err => {
                     console.log(err)
                 })
-                .then(window.location = '/home')
         }
     }
 
 
-    render() {
 
 
         return(
@@ -165,27 +185,31 @@ class PostForm extends React.Component {
                             rows="5"
                             type='textarea'
                             placeholder='Title'
-                            value={this.state.title}
-                            onChange={this.handleChanges1}
+                            value={state.title}
+                            onChange={handleChanges1}
 
                         />
                         <INPUT
                             rows="5"
                             type='textarea'
                             placeholder='Post'
-                            value={this.state.postdescript}
-                            onChange={this.handleChanges2}
+                            value={state.postdescript}
+                            onChange={handleChanges2}
 
                         />
 
                         <HOLDER>
-                                <BUTTON onClick={this.postForm}>Add Post</BUTTON>
+                                <BUTTON onClick={postForm}>Add Post</BUTTON>
                         </HOLDER>
 
                     </DIV2>
 
                     <DIV3>
-                        <PostCard />
+                        {api.map((post, index) => {
+                            return(
+                                <PostCard key={index} title={post.title} postdescript={post.postdescript}/>
+                            )
+                        })}
                     </DIV3>
                              
 
@@ -196,21 +220,11 @@ class PostForm extends React.Component {
                 </DIV4>
 
             </MAIN>
-
-
-
         )
-    }
-
 }
 
 
-const mapStateToProps = (state) => {
-    return {
-        store: state.reducer
-    }
-}
+export default PostForm;
 
-export default connect(mapStateToProps, { addUserPost })(PostForm);
 
 

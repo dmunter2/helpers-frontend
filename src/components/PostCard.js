@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Style from 'styled-components';
-import axiosWithAuth from './axiosWithAuth';
 
 const DIV = Style.div`
 background-color: #f5f8fa;
@@ -34,48 +33,14 @@ const COMMENT = Style.div`
 margin: 0;
 
 `
-const H1 = Style.h1`
-border-bottom: 1px solid grey;
-margin: 0;
-width: 90%;
-display: flex;
-align-items: center;
-text-align: initial;
-color: #1f2020;
-font-family: 'Roboto', sans-serif;
+const DIV2 = Style.div`
+border: 1px solid blue;`
 
-`
-const H2 = Style.h4`
-width: 95%;
-// font-size: 1.2rem;
-font-weight: 600;
-`
-const H5 = Style.h4`
-margin: 0;
-color: #1f2020;
-
-`
 
 
 
 function PostCard(props){
 
-    const [posts, setPosts] = useState([])
-
-
-    useEffect(() => {
-        axiosWithAuth()
-            .get('https://seller-backends.herokuapp.com/api/post')
-            .then(res => {
-                let data = res.data.slice(Math.max(res.data.length - 5))
-                console.log(data)
-                setPosts(data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    },[])
-     
 
 
 
@@ -83,20 +48,13 @@ function PostCard(props){
     return(
         <DIV>
        
-                
-                {posts.map((post) => {
-                    return(
-                        <DIV1>
-                            <h1>{post.title}</h1>
-                            <h1>{post.postdescript}</h1>
 
-                        </DIV1>
-
-                    )
-                })}
-
-
-
+            <DIV1>
+                <h1>{props.title}</h1>
+            </DIV1>
+            <DIV2>
+                <h1>{props.postdescript}</h1>
+            </DIV2>
 
 
             <DIV3>
