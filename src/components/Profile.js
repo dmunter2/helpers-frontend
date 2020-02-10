@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Style from 'styled-components';
-
+import axiosWithAuth from './axiosWithAuth'
+import { Card } from 'semantic-ui-react';
 
 const DIV = Style.div`
 display: flex;
@@ -18,10 +19,40 @@ width: 33%;
 const H1 = Style.h1`
 padding-left: 2%;
 `
+const H2 = Style.h2`
+
+`
+const H4 = Style.h2`
+color: blue;
+`
+const H5 = Style.h2`
+color: purple;
+`
+const DATE = Style.div`
 
 
+`
+const HN = Style.h4`
+position: absolute;
+margin-left: 2%;
 
-function Profile(){
+`
+const CARD = Style.div`
+
+// background-color: white;
+`
+
+
+function Profile(props){
+
+    // useEffect(() => {
+    //     axiosWithAuth()
+    //         .get('')
+    //         .then()
+    //         .catch()
+    
+    // }, [])
+
 
 
     const [display, setDisplay]  = useState({
@@ -30,7 +61,7 @@ function Profile(){
         comments: 'no-show'
 })
 
-    const [post, setPost] = useState([])
+    const [posts, setPost] = useState([])
 
 
     const clickHandler = e => {
@@ -41,6 +72,16 @@ function Profile(){
                 likes: 'no-show',
                 comments: 'no-show'
             })
+            axiosWithAuth()
+                .get('https://seller-backends.herokuapp.com/api/post/me')
+                .then(res => setPost(res.data))
+                .then(() => {
+                    
+                })
+
+                .catch(err => {console.log(err)})
+
+
         } else if (e.target.className === 'sc-fzXfLW hXsOxE likes') {
             setDisplay({
                 posts: 'no-show',
@@ -55,6 +96,8 @@ function Profile(){
             })
         }
     }
+
+
 
 
 
@@ -79,16 +122,41 @@ function Profile(){
             </DIV>
             <DIV2>
                 <Text className={display.posts}>
-                    <h1>whats up posts</h1>
+
+
+                    {posts.map((post, index) => {
+
+                    
+
+                        let newDate = post.date.slice(0,10);
+                        let newYear = newDate.slice(0,4)
+                        let newDay = newDate.slice(8,10)
+                        let newMonth = newDate.slice(5,7)
+
+                        
+                        return(
+                            <CARD key={index}>
+                                <H1>{post.title}</H1>
+                                <h2>{post.postdescript}</h2>
+                                <DATE>
+                                    <h2>{newMonth}-{newDay}-{newYear}</h2>
+
+                                </DATE>
+
+                            
+                            </CARD>
+                    
+                        )
+                    })}
                 </Text>
 
                 <Text className={display.likes}>
-                    <h1>whats up likes</h1>
+                    <H5>Coming Soon...</H5>
 
                 </Text>
 
                 <Text className={display.comments}>
-                    <h1>whats up comments</h1>
+                    <H4>Coming Soon...</H4>
 
                 </Text>
 
