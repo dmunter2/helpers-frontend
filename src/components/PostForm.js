@@ -62,6 +62,7 @@ background-color: #e4e4e2;
 padding: 2%;
 font-family: 'Open Sans', sans-serif;
 font-size: .8rem;
+resize: none;
 `
 const HOLDER = Style.div`
 width: 100%;
@@ -100,7 +101,7 @@ font-size: .8rem;
 function PostForm(){
 
 
-    const [state, setState] = useState({
+    const [post, setPost] = useState({
         title: '',
         postdescript: '',
     })
@@ -116,7 +117,6 @@ function PostForm(){
                 let data = res.data.slice(Math.max(res.data.length - 5))
                 setApi(data)
             })
-            .then(res => console.log(res.data))
             .catch(err => {
                 console.log(err)
             })
@@ -130,48 +130,50 @@ function PostForm(){
 
 
     const handleChanges1 = e => {
-        setState({ title: e.target.value });
-    };
-    const handleChanges2 = e => {
-        setState({ postdescript: e.target.value });
+        setPost({ 
+            ...post, 
+            [e.target.name]: e.target.value
+         });
     };
 
 
 
     
     const postForm = e => {
-        if(state.title === '' || state.postdescript === ''){
+        e.preventDefault()
+        if (post.title === '' || post.postdescript === ''){
             alert('Make sure you enter a title and a description')
         } else {
 
             axiosWithAuth()
-                .post('https://seller-backends.herokuapp.com/api/post/new', state)
+                .post('https://seller-backends.herokuapp.com/api/post/new', post)
+                .then(console.log(post))
                 // .then(props.addUserPost(this.state))
                 .then(() => {
-                    setState({
+                    setPost({
                         title: '',
                         postdescript: ''
                     })
                 }
                  
                 )
-                // .then(
-                //     axiosWithAuth()
-                //         .get('https://seller-backends.herokuapp.com/api/post')
-                //         .then(res => {
-                //             let data = res.data.slice(Math.max(res.data.length - 5))
-                //             setApi(data)
-                //         })
-                //         .catch(err => {
-                //             console.log(err)
-                //         })
-                // )
+                .then(
+                    axiosWithAuth()
+                        .get('https://seller-backends.herokuapp.com/api/post')
+                        .then(res => {
+                            let data = res.data.slice(Math.max(res.data.length - 5))
+                            console.log(data)
+                            setApi(data)
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        })
+                )
                 .catch(err => {
                     console.log(err)
                 })
         }
     }
-
 
 
 
@@ -185,7 +187,8 @@ function PostForm(){
                             rows="5"
                             type='textarea'
                             placeholder='Title'
-                            value={state.title}
+                            value={post.title}
+                            name='title'
                             onChange={handleChanges1}
 
                         />
@@ -193,8 +196,9 @@ function PostForm(){
                             rows="5"
                             type='textarea'
                             placeholder='Post'
-                            value={state.postdescript}
-                            onChange={handleChanges2}
+                            name='postdescript'
+                            value={post.postdescript}
+                            onChange={handleChanges1}
 
                         />
 

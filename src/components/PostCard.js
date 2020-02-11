@@ -34,13 +34,16 @@ margin: 0;
 
 `
 const DIV2 = Style.div`
-border: 1px solid blue;`
+border: 1px solid blue;
 
+`
+const H1 = Style.h2`
+color: green;
+`
 
 
 
 function PostCard(props){
-
 
 
 
@@ -50,10 +53,10 @@ function PostCard(props){
        
 
             <DIV1>
-                <h1>{props.title}</h1>
+                <H1>{props.title}</H1>
             </DIV1>
             <DIV2>
-                <h1>{props.postdescript}</h1>
+                <H1>{props.postdescript}</H1>
             </DIV2>
 
 
