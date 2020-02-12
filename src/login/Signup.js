@@ -81,6 +81,7 @@ function Signup() {
                     .then((res) => {
                         localStorage.setItem('token', res.data.token)
                         localStorage.setItem('user', res.data.user_id)
+                        localStorage.setItem('new', res.data.username)
                         window.location.href = '/home'
 
                     })

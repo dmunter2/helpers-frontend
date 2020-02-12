@@ -4,6 +4,7 @@ import Axios from 'axios';
 import BeforeCard from './BeforeCard'
 import Login from '../../login/Login';
 import Signup from '../../login/Signup';
+import axiosWithAuth from '../axiosWithAuth';
 
 
 const DIV = Style.div`
@@ -12,10 +13,12 @@ width: 60%;
 height: 1000px;
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 border-radius: 5px;
+overflow: auto;
+max-height: 800px;
+padding: 1%;
 display: flex;
 flex-direction: column;
-// justify-content: center;
-// align-items: flex-start;
+margin-bottom: 100px;
 
 `
 const MAIN = Style.div`
@@ -77,9 +80,15 @@ function BeforeNews() {
     })
 
       useEffect(() => {
-        Axios
+            Axios
+            //backend needs to remove middleware from a few routes
             .get('https://seller-backends.herokuapp.com/api/post')
-            .then(res => setPosts(res.data))
+            .then(res => {
+                let data = res.data.slice(Math.max(res.data.length - 15))
+
+                setPosts(data)
+            })
+              
             .then(() => setLoading('not-loading'))
             // .then(res => console.log(res.data))
             .catch(err => console.log(err))

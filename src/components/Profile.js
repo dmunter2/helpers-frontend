@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import Style from 'styled-components';
 import axiosWithAuth from './axiosWithAuth'
-import { Card } from 'semantic-ui-react';
-
+import UserCard from './UserCard'
 const DIV = Style.div`
 display: flex;
 flex-direction: row;
@@ -66,7 +65,7 @@ function Profile(props){
 
     const clickHandler = e => {
         e.preventDefault();
-        if (e.target.className === 'sc-fzXfLW hXsOxE posts'){
+        if (e.target.className.slice(-5) === 'posts'){
             setDisplay({
                 posts: 'show',
                 likes: 'no-show',
@@ -75,20 +74,16 @@ function Profile(props){
             axiosWithAuth()
                 .get('https://seller-backends.herokuapp.com/api/post/me')
                 .then(res => setPost(res.data))
-                .then(() => {
-                    
-                })
-
                 .catch(err => {console.log(err)})
 
 
-        } else if (e.target.className === 'sc-fzXfLW hXsOxE likes') {
+        } else if (e.target.className.slice(-5) === 'likes') {
             setDisplay({
                 posts: 'no-show',
                 likes: 'show',
                 comments: 'no-show'
             })
-        } else if (e.target.className === 'sc-fzXfLW hXsOxE comments') {
+        } else if (e.target.className.slice(-8) === 'comments') {
             setDisplay({
                 posts: 'no-show',
                 likes: 'no-show',
@@ -97,7 +92,7 @@ function Profile(props){
         }
     }
 
-
+  
 
 
 
@@ -125,27 +120,10 @@ function Profile(props){
 
 
                     {posts.map((post, index) => {
-
-                    
-
-                        let newDate = post.date.slice(0,10);
-                        let newYear = newDate.slice(0,4)
-                        let newDay = newDate.slice(8,10)
-                        let newMonth = newDate.slice(5,7)
-
                         
                         return(
-                            <CARD key={index}>
-                                <H1>{post.title}</H1>
-                                <h2>{post.postdescript}</h2>
-                                <DATE>
-                                    <h2>{newMonth}-{newDay}-{newYear}</h2>
-
-                                </DATE>
-
-                            
-                            </CARD>
-                    
+                                <UserCard key={index} setPost={setPost} title={post.title} postdescript={post.postdescript} date={post.date} id={post.id}/>
+                               
                         )
                     })}
                 </Text>
