@@ -1,8 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { connect } from 'react-redux'
-import { addUserPost } from '../actions/actions'
-// import combineReducers from '../reducers/index'
-// import axios from 'axios';
 import PostCard from './PostCard';
 import Style from 'styled-components';
 import axiosWithAuth from './axiosWithAuth';
@@ -46,7 +42,7 @@ align-items: center;
 `
 const DIV3 = Style.div`
 display: flex;
-flex-direction: column;
+flex-direction: column-reverse;
 justify-content: center;
 align-items: center;
 padding-bottom: 4%;
@@ -147,7 +143,6 @@ function PostForm(){
 
             axiosWithAuth()
                 .post('https://seller-backends.herokuapp.com/api/post/new', post)
-                .then(console.log(post))
                 // .then(props.addUserPost(this.state))
                 .then(() => {
                     setPost({
@@ -162,7 +157,6 @@ function PostForm(){
                         .get('https://seller-backends.herokuapp.com/api/post')
                         .then(res => {
                             let data = res.data.slice(Math.max(res.data.length - 5))
-                            console.log(data)
                             setApi(data)
                         })
                         .catch(err => {
@@ -170,7 +164,7 @@ function PostForm(){
                         })
                 )
                 .catch(err => {
-                    console.log(err)
+                    console.log({message: "this is an error"})
                 })
         }
     }
