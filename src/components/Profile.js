@@ -8,7 +8,9 @@ flex-direction: row;
 justify-content: space-around;
 `
 
-const Text = Style.div``
+const Text = Style.div`
+margin-top: 20px;
+`
 const DIV2 = Style.div``
 
 const Button = Style.div`

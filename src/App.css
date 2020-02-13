@@ -98,3 +98,31 @@ margin: 0;
 .no-show{
   display: none;
 }
+
+.show-input{
+height: 100px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 4px;
+}
+
+.show-post{
+padding: 4px;
+height: 100px;
+display: flex;
+flex-direction: row;
+width: 100%;
+}
+
+
+
+
+.inputs{
+  width: 70%;
+margin: 2%;
+border-radius: 5px;
+border: 1px solid white;
+height: 40px;
+}
