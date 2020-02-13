@@ -11,7 +11,8 @@ justify-content: space-around;
 const Text = Style.div`
 margin-top: 20px;
 `
-const DIV2 = Style.div``
+const DIV2 = Style.div`
+`
 
 const Button = Style.div`
 border: 1px solid red;
