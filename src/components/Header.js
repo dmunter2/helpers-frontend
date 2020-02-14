@@ -46,7 +46,9 @@ flex-direction: row;
 const H2 = Style.h2`
 color: #C3C5CA;
 `
-
+const Top = Style.div`
+`
+const Bottom = Style.div``
 class Header extends React.Component {
 
     
@@ -64,21 +66,25 @@ class Header extends React.Component {
         return(
 
             <DIV>
-                <H1>Post-It</H1>
 
-                <DIV1>
-                    <MAIN>
+                    <H1>Post-It</H1>
 
-                        <H2>Welcome, {localStorage.getItem('new')}</H2>
-                    </MAIN>
+                    <DIV1>
+                        <MAIN>
 
-                <SignOut />
+                            <H2>Welcome, {localStorage.getItem('new')}</H2>
+                        </MAIN>
+
+                        <SignOut />
+                    </DIV1>
+
+
+
 
         
                             
         
         
-                </DIV1>
 
             </DIV>
         )

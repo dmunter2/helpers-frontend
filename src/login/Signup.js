@@ -21,7 +21,7 @@ padding-right: 3%;
 const BUTTON = Style.button`
 width: 90px;
 height: 40px;
-background-color: navy;
+background-color: #353878;
 border: none;
 color: white;
 border-radius: 5px;
@@ -43,7 +43,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 `
-const MAIN = Style.div``
+const MAIN = Style.div`
+`
 function Signup() {
 
     const [credentials, setCredentials] = useState({
@@ -103,7 +104,7 @@ function Signup() {
                 <div className={loading.retry}>Username is already in use</div>
 
                 <div className={loading.loading}>Loading...</div>
-                <H1 className={loading.everything}>Please Create a username and password</H1>
+                <H1 className={loading.everything}>Create a username and password</H1>
 
             </DIV3>
             <DIV >
