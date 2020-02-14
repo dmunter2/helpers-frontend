@@ -4,7 +4,6 @@ import Axios from 'axios';
 import BeforeCard from './BeforeCard'
 import Login from '../../login/Login';
 import Signup from '../../login/Signup';
-import axiosWithAuth from '../axiosWithAuth';
 
 
 const DIV = Style.div`

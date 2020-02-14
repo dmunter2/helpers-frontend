@@ -13,7 +13,17 @@ padding-right: 3%;
 
 const NEW = Style.div`
 margin-bottom: 15px;
+display: flex;
+justify-content: center;
 `
+const Hold = Style.div`
+background-color: #C3C5CA;
+height: 150px;
+width: 90%;
+
+`
+
+
 const H1 = Style.h1`
 margin: 0;
 font-family: 'Merriweather', serif;
@@ -38,6 +48,11 @@ const DIV2 = Style.div``
 const DIV4 = Style.div`
 width: 100%;
 `
+const First = Style.div`
+width: 50%;
+`
+const Next = Style.div``
+
 const Save = Style.div``
 const Edit = Style.div``
 function UserCard({title, postdescript, id, date, setPost}){
@@ -45,7 +60,8 @@ function UserCard({title, postdescript, id, date, setPost}){
     const [editbtn, setEditbtn] = useState({
         input: 'no-show',
         post: 'show-post',
-        showEdit: 'no-show'
+        showEdit: 'no-show',
+        showDate: 'show'
     })
 
     const [changes, setChanges] = useState({
@@ -122,9 +138,6 @@ function UserCard({title, postdescript, id, date, setPost}){
                             showEdit: 'no-show'
                         })
                     })
-                    .then(() => {
-                    
-                    })
             })
     }
 
@@ -132,9 +145,10 @@ function UserCard({title, postdescript, id, date, setPost}){
     const showOptions = e => {
         e.preventDefault();
         setEditbtn({
-            showEdit: 'show',
+            showEdit: 'edit',
             input: 'show-input',
-            post: 'no-show'
+            post: 'no-show',
+            showDate: 'no-show'
         })
 
     }
@@ -168,11 +182,20 @@ function UserCard({title, postdescript, id, date, setPost}){
 
     return(
         <NEW>
+            <Hold>
+
 
             <Edit className={editbtn.showEdit}>
-                <button onClick={save}>Save</button>
-                <button onClick={cancel}>Cancel</button> 
-                <button onClick={deleteHandler}>delete</button>
+
+                <First>
+                    <button className='save-btn' onClick={save}>Save</button>
+                    <button className='cancel-btn' onClick={cancel}>Cancel</button>
+                </First>
+
+                <Next>
+                    <button className='delete-btn' onClick={deleteHandler}>delete</button>
+                </Next>
+
             </Edit>
           
             <DIV2 className={editbtn.input}>
@@ -192,7 +215,8 @@ function UserCard({title, postdescript, id, date, setPost}){
                     <IMG src={more_options} onClick={showOptions} placeholder='yo'/>
                 </DIV>
             
-                <DATE>{newMonth}-{newDay}-{newYear}</DATE>
+                <DATE className={editbtn.showDate}>{newMonth}-{newDay}-{newYear}</DATE>
+            </Hold>
 
         </NEW>
     )
