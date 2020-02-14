@@ -23,7 +23,7 @@ padding-right: 3%;
 const BUTTON = Style.button`
 width: 90px;
 height: 40px;
-background-color: navy;
+background-color: #353878;
 border: none;
 color: white;
 border-radius: 5px;

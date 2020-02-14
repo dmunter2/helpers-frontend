@@ -116,7 +116,8 @@ flex-direction: row;
 width: 100%;
 }
 
-
+.show{
+}
 
 
 .inputs{
@@ -125,4 +126,57 @@ margin: 2%;
 border-radius: 5px;
 border: 1px solid white;
 height: 40px;
+}
+
+.signout{
+  background-color: #282c34;
+  color: #C3C5CA;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #282c34;
+  
+}
+.signout:hover{
+  border: 1px solid #C3C5CA;
+}
+
+.posts{
+  border: 1px solid red;
+}
+
+.edit{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2%;
+}
+
+
+.save-btn{
+  background-color: #0F9D58;
+  border: 1px solid #0F9D58;
+  color: white;
+  width: 50px;
+  padding:3px;
+  margin-right: 10px;
+}
+.cancel-btn{
+ background-color: #535150;
+  border: 1px solid #535150;
+  color: white;
+  padding:3px;
+  width: 50px;
+
+
+  
+}
+.delete-btn{
+ background-color: #DB4437;
+  border: 1px solid #DB4437;
+  color: white;
+  padding:3px;
+  width: 50px;
+
+
+
+
 }

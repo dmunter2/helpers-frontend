@@ -6,93 +6,113 @@ import Profile from './Profile';
 
 
 const DIV = Style.div`
-background-color: #F5F5F5;
+margin-top: -54px;
 width: 60%;
 height: 100%;
-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 border-radius: 5px;
 display: flex;
 flex-direction: column;
+@media (max-width: 940px) {
+  margin-top: 30px;
+}
+
 
 `
 const MAIN = Style.div`
 display: flex;
 flex-direction: row;
-// justify-content: center;
 justify-content: space-around;
-// align-items: center;
 padding-left: 1%;
 padding-right: 1%;
 padding-bottom: 4%;
 height: 100%;
-border: 1px solid green;
+@media (max-width: 940px) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 `
 const DIV2 = Style.div`
-// background-color: blue;
-border-radius: 5px;
-height: 140px;
-margin: 3%;
-width: 300px;
+height: 160px;
+background-color: #606C96;
+width: 500px;
 display: flex;
-flex-direction: column;
+flex-direction: row;
 justify-content: center;
-align-items: center;
+align-items: end;
+padding-bottom: 20px;
+
 
 
 `
+
+
 const DIV3 = Style.div`
+background-color:#606C96;
+margin-top: 30px;
 display: flex;
-flex-direction: column-reverse;
+flex-wrap: wrap;
 justify-content: center;
 align-items: center;
 padding-bottom: 4%;
+width: 90%;
+min-width: 500px;
 `
 
 const INPUT = Style.textarea`
-max-width: 250px;
-width: 250px;
+max-width: 300px;
+width: 300px;
 max-height: 80px;
 border: none;
-border-radius: 5px;
 background-color: #e4e4e2;
 padding: 2%;
+margin-top: 10px;
+
 font-family: 'Open Sans', sans-serif;
 font-size: .8rem;
 resize: none;
 `
 const HOLDER = Style.div`
-width: 100%;
+// width: 70px;
 text-align: end;
+margin-right: 7%;
 `
 
 const BUTTON = Style.button`
-border: 1px solid  #1f2020;
-background-color: #1f2020;
-height: 30px;
-border-radius: 5px;
-width: 80px;
-color: white;
-margin: 10px 25px 0 0;
+border: 1px solid  #e4e4e2;
+background-color: #e4e4e2;
+height: 40px;
+width: 100px;
+color: black;
+
 
 `
 const DIV4 = Style.div`
-width: 35%;
-background-color: #F5F5F5;
+margin-top: -54px;
+background-color: #606C96;
+width: 400px;
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-border-radius: 5px;
+@media (max-width: 940px) {
+  margin-top: 30px;
+//   width: 500px
+}
 `
 const INPUT2 = Style.input`
-max-width: 250px;
-width: 250px;
+max-width: 300px;
+width: 300px;
 border: none;
-border-radius: 5px;
 background-color: #e4e4e2;
 padding: 2%;
 font-family: 'Open Sans', sans-serif;
 font-size: .8rem;
 `
+const Top = Style.div``
 
-
+const Postcount = Style.div``
+const Hold = Style.div`
+padding-left: 4%;
+`
 
 function PostForm(){
 
@@ -110,7 +130,7 @@ function PostForm(){
         axiosWithAuth()
             .get('https://seller-backends.herokuapp.com/api/post')
             .then(res => {
-                let data = res.data.slice(Math.max(res.data.length - 5))
+                let data = res.data.slice(Math.max(res.data.length - 6))
                 setApi(data)
             })
             .catch(err => {
@@ -156,7 +176,7 @@ function PostForm(){
                     axiosWithAuth()
                         .get('https://seller-backends.herokuapp.com/api/post')
                         .then(res => {
-                            let data = res.data.slice(Math.max(res.data.length - 5))
+                            let data = res.data.slice(Math.max(res.data.length - 6))
                             setApi(data)
                         })
                         .catch(err => {
@@ -176,31 +196,51 @@ function PostForm(){
           
                 <DIV>
 
+                    <Top>
+
+
                     <DIV2>
-                        <INPUT2
-                            rows="5"
-                            type='textarea'
-                            placeholder='Title'
-                            value={post.title}
-                            name='title'
-                            onChange={handleChanges1}
+                        <Hold>
 
-                        />
-                        <INPUT
-                            rows="5"
-                            type='textarea'
-                            placeholder='Post'
-                            name='postdescript'
-                            value={post.postdescript}
-                            onChange={handleChanges1}
+                            <INPUT2
+                                rows="5"
+                                type='textarea'
+                                placeholder='Title'
+                                value={post.title}
+                                name='title'
+                                onChange={handleChanges1}
 
-                        />
+                            />
+                            <INPUT
+                                rows="5"
+                                type='textarea'
+                                placeholder='Post'
+                                name='postdescript'
+                                value={post.postdescript}
+                                onChange={handleChanges1}
+
+                            />
+
+                        </Hold>
+
 
                         <HOLDER>
                                 <BUTTON onClick={postForm}>Add Post</BUTTON>
                         </HOLDER>
 
                     </DIV2>
+{/* 
+                    <Postcount>
+
+                    </Postcount> */}
+
+
+
+                    </Top>
+
+
+
+
 
                     <DIV3>
                         {api.map((post, index) => {

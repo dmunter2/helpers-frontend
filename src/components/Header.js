@@ -7,22 +7,22 @@ import { addUserInfo } from '../actions/actions'
 
 
 const DIV = Style.div`
-border: 1px solid #F5F5F5;
-background-color: #F5F5F5;
+border: 1px solid #353878;
+background-color: #353878;
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 margin-bottom: 2%;
-height: 60px;
+height: 150px;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 `
 const H1 = Style.h1`
-margin: 0;
-margin-left: 4%;
+margin-left: 30px;
+margin-top: 10px;
+font-weight: 600;
 text-align: initial;
-color: #25282a;
-font-size: 1.5rem;
-margin-right: 0;
+color: #C3C5CA;
+font-size: 3.5rem;
 width: 200px;
 `
 
@@ -32,6 +32,10 @@ display: flex;
 margin-right: 5%;
 flex-direction: row;
 text-align: end;
+display: flex;
+align-items: center;
+justify-content: center;
+padding-bottom: 60px;
 
 justify-content: space-between;
 `
@@ -39,7 +43,12 @@ const MAIN = Style.div`
 display: flex;
 flex-direction: row;
 `
-
+const H2 = Style.h2`
+color: #C3C5CA;
+`
+const Top = Style.div`
+`
+const Bottom = Style.div``
 class Header extends React.Component {
 
     
@@ -57,21 +66,25 @@ class Header extends React.Component {
         return(
 
             <DIV>
-                <H1>Post-It</H1>
 
-                <DIV1>
-                    <MAIN>
+                    <H1>Post-It</H1>
 
-                        <H1>Welcome, {localStorage.getItem('new')}</H1>
-                    </MAIN>
+                    <DIV1>
+                        <MAIN>
 
-                <SignOut />
+                            <H2>Welcome, {localStorage.getItem('new')}</H2>
+                        </MAIN>
+
+                        <SignOut />
+                    </DIV1>
+
+
+
 
         
                             
         
         
-                </DIV1>
 
             </DIV>
         )

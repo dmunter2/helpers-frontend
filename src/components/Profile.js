@@ -11,14 +11,21 @@ justify-content: space-around;
 const Text = Style.div`
 margin-top: 20px;
 `
-const DIV2 = Style.div``
+const DIV2 = Style.div`
+`
 
 const Button = Style.div`
-border: 1px solid red;
+background-color: #353878;
+border: 1px solid #353878;
+height: 50px;
+display: flex;
+align-items: center;
+padding-left: 5px;
 width: 33%;
 `
 const H1 = Style.h1`
 padding-left: 2%;
+color: #C3C5CA;
 `
 const H2 = Style.h2`
 

@@ -4,7 +4,8 @@ import Style from 'styled-components';
 // import axios from 'axios'
 import BeforeNews from './BeforeNews'
 
-const DIV = Style.div``
+const DIV = Style.div`
+`
 
 
 
