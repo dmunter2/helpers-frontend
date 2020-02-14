@@ -12,6 +12,10 @@ height: 100%;
 border-radius: 5px;
 display: flex;
 flex-direction: column;
+@media (max-width: 940px) {
+  margin-top: 30px;
+}
+
 
 `
 const MAIN = Style.div`
@@ -22,6 +26,12 @@ padding-left: 1%;
 padding-right: 1%;
 padding-bottom: 4%;
 height: 100%;
+@media (max-width: 940px) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 `
 const DIV2 = Style.div`
 height: 160px;
@@ -83,6 +93,10 @@ margin-top: -54px;
 background-color: #606C96;
 width: 400px;
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+@media (max-width: 940px) {
+  margin-top: 30px;
+//   width: 500px
+}
 `
 const INPUT2 = Style.input`
 max-width: 300px;
@@ -215,10 +229,10 @@ function PostForm(){
                         </HOLDER>
 
                     </DIV2>
-
+{/* 
                     <Postcount>
 
-                    </Postcount>
+                    </Postcount> */}
 
 
 
