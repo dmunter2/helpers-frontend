@@ -8,6 +8,7 @@ box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 margin: 5%;
 height: 100px;
 width: 280px;
+padding: 1%;
 
 
 
@@ -29,6 +30,10 @@ const DIV1 = Style.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+border-bottom: 1px solid #353878;
+margin-bottom: 1%;
+padding-bottom: 1%;
+
 
 `
 const COMMENT = Style.div`
@@ -42,7 +47,10 @@ const H1 = Style.h2`
 color: #1f2020;
 margin: 0;
 `
-
+const H2 = Style.h3`
+font-size: 1.1rem;
+margin: 0;
+`
 
 
 function PostCard(props){
@@ -58,7 +66,7 @@ function PostCard(props){
                 <H1>{props.title}</H1>
             </DIV1>
             <DIV2>
-                <H1>{props.postdescript}</H1>
+                <H2>{props.postdescript}</H2>
             </DIV2>
 
 
