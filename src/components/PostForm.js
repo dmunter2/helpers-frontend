@@ -94,6 +94,9 @@ margin-right: 7%;
 
 @media (max-width: 700px) {
   margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
 }
 
 
@@ -146,7 +149,6 @@ justify-content: center;
 
 `
 
-const Postcount = Style.div``
 const Hold = Style.div`
 padding-left: 4%;
 `
@@ -213,7 +215,7 @@ function PostForm(){
                     axiosWithAuth()
                         .get('https://seller-backends.herokuapp.com/api/post')
                         .then(res => {
-                            let data = res.data.slice(Math.max(res.data.length - 6))
+                            let data = res.data.slice(0, 6)
                             setApi(data)
                         })
                         .catch(err => {
@@ -266,10 +268,7 @@ function PostForm(){
                         </HOLDER>
 
                     </DIV2>
-{/* 
-                    <Postcount>
 
-                    </Postcount> */}
 
 
 

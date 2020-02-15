@@ -12,11 +12,7 @@ background-color: #C3C5CA;
 
 `
 
-const H1 = Style.h1`
-`
-const H2 = Style.h2`
 
-`
 const DIV = Style.div``
 
 const DIV1 = Style.div``
