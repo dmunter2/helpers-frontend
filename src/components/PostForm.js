@@ -167,7 +167,7 @@ function PostForm(){
         axiosWithAuth()
             .get('https://seller-backends.herokuapp.com/api/post')
             .then(res => {
-                let data = res.data.slice(Math.max(res.data.length - 6))
+                let data = res.data.slice(0, 6)
                 setApi(data)
             })
             .catch(err => {

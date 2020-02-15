@@ -98,8 +98,8 @@ function BeforeNews() {
             //backend needs to remove middleware from a few routes
             .get('https://seller-backends.herokuapp.com/api/post')
             .then(res => {
-                let data = res.data.slice(Math.max(res.data.length - 15))
-
+                let data = res.data.slice(0,15)
+                console.log(data)
                 setPosts(data)
             })
               
