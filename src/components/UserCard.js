@@ -15,6 +15,7 @@ const NEW = Style.div`
 margin-bottom: 15px;
 display: flex;
 justify-content: center;
+
 `
 const Hold = Style.div`
 background-color: #C3C5CA;
@@ -47,6 +48,7 @@ padding: 0 20px 0 7px;
 const DIV2 = Style.div``
 const DIV4 = Style.div`
 width: 100%;
+padding-bottom: 3%;
 `
 const First = Style.div`
 width: 50%;

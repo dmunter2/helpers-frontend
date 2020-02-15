@@ -9,7 +9,9 @@ display: flex;
 margin-top: 22px;
 align-items: end;
 flex-direction: column;
-
+@media (max-width: 600px) {
+  width: 30px;
+}
 `
 const H1 = Style.h1`
 margin: 0;
