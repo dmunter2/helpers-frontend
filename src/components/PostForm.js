@@ -16,6 +16,10 @@ flex-direction: column;
   margin-top: 30px;
 }
 
+@media (max-width: 700px) {
+  width: 100%;
+}
+
 
 `
 const MAIN = Style.div`
@@ -43,7 +47,13 @@ justify-content: center;
 align-items: end;
 padding-bottom: 20px;
 
-
+@media (max-width: 940px) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 15px;
+}
 
 `
 
@@ -57,7 +67,11 @@ justify-content: center;
 align-items: center;
 padding-bottom: 4%;
 width: 90%;
-min-width: 500px;
+
+@media (max-width: 700px) {
+  width: 100%;
+}
+
 `
 
 const INPUT = Style.textarea`
@@ -77,6 +91,12 @@ const HOLDER = Style.div`
 // width: 70px;
 text-align: end;
 margin-right: 7%;
+
+@media (max-width: 700px) {
+  margin-top: 10px;
+}
+
+
 `
 
 const BUTTON = Style.button`
@@ -97,6 +117,12 @@ box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   margin-top: 30px;
 //   width: 500px
 }
+
+@media (max-width: 700px) {
+  width: 100%;
+}
+
+
 `
 const INPUT2 = Style.input`
 max-width: 300px;
@@ -107,7 +133,18 @@ padding: 2%;
 font-family: 'Open Sans', sans-serif;
 font-size: .8rem;
 `
-const Top = Style.div``
+const Top = Style.div`
+// width: 100%;
+
+@media (max-width: 700px) {
+  display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
+
+`
 
 const Postcount = Style.div``
 const Hold = Style.div`

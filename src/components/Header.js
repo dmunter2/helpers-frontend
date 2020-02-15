@@ -15,6 +15,11 @@ height: 150px;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+@media (max-width: 600px) {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
 `
 const H1 = Style.h1`
 margin-left: 30px;
@@ -24,6 +29,14 @@ text-align: initial;
 color: #C3C5CA;
 font-size: 3.5rem;
 width: 200px;
+@media (max-width: 600px) {
+  font-size: 2rem;
+  margin: 0;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+}
+
 `
 
 const DIV1 = Style.div`
@@ -38,13 +51,35 @@ justify-content: center;
 padding-bottom: 60px;
 
 justify-content: space-between;
+@media (max-width: 600px) {
+    display: flex;
+    width: 60%;
+    margin-top: 20px;
+
+  justify-content: space-around;
+}
+
 `
 const MAIN = Style.div`
 display: flex;
 flex-direction: row;
+
+@media (max-width: 600px) {
+  width: 80%;
+  text-align: center;
+}
+
+
 `
 const H2 = Style.h2`
 color: #C3C5CA;
+
+@media (max-width: 600px) {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+
 `
 const Top = Style.div`
 `
