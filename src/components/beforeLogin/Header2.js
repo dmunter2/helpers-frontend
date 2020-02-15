@@ -36,13 +36,8 @@ padding-bottom: 60px;
 
 justify-content: space-between;
 `
-const MAIN = Style.div`
-display: flex;
-flex-direction: row;
-`
-const H2 = Style.h2`
-color: #C3C5CA;
-`
+
+
 
 class Header2 extends React.Component {
 

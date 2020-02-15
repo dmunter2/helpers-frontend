@@ -81,9 +81,7 @@ color: #C3C5CA;
 
 
 `
-const Top = Style.div`
-`
-const Bottom = Style.div``
+
 class Header extends React.Component {
 
     

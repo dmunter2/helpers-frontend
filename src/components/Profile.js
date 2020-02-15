@@ -27,28 +27,15 @@ const H1 = Style.h1`
 padding-left: 2%;
 color: #C3C5CA;
 `
-const H2 = Style.h2`
 
-`
 const H4 = Style.h2`
 color: blue;
 `
 const H5 = Style.h2`
 color: purple;
 `
-const DATE = Style.div`
 
 
-`
-const HN = Style.h4`
-position: absolute;
-margin-left: 2%;
-
-`
-const CARD = Style.div`
-
-// background-color: white;
-`
 
 
 function Profile(props){

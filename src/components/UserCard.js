@@ -2,7 +2,6 @@
 import React, {useState} from 'react';
 import Style from 'styled-components';
 import axiosWithAuth from './axiosWithAuth';
-import { StepContent } from 'semantic-ui-react';
 import more_options from './more_options.png';
 
 
@@ -55,7 +54,6 @@ width: 50%;
 `
 const Next = Style.div``
 
-const Save = Style.div``
 const Edit = Style.div``
 function UserCard({title, postdescript, id, date, setPost}){
 
